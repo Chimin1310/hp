@@ -8,17 +8,6 @@
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
 </head>
 <body>
-    <script>
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('service-worker.js')
-            .then((registration) => {
-              console.log('Service Worker registrado con éxito:', registration);
-            })
-            .catch((error) => {
-              console.error('Error al registrar el Service Worker:', error);
-            });
-        }
-      </script>
 
     <h1>Harry Potter</h1>
     <ul id="studentList"></ul>
@@ -38,7 +27,8 @@
             })
             .catch(error => console.error('Error fetching data:', error));
     </script>
-    <script src="sw.js"></script>
+    <script src="app.js"></script>
     <script src="service-worker.js"></script>
+    <script src="indexDB.js"></script>
 </body>
 </html>
