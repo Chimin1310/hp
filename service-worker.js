@@ -62,7 +62,7 @@ self.addEventListener('fetch', evento =>{
                             //Mandamos llamar la limpieza al cargar un nuevo archivo
                             //estamos indicando que se limpiará el cache dinamico y que 
                             //solo debe haber 2 archivos
-                            limpiarCache(CACHE_DINAMICO,2);
+                            limpiarCache(CACHE_DINAMICO,20);
                         })
                     //se retorna el archivo recuperado para visualizar la página
                     return resWeb.clone();  
