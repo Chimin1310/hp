@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="images/logo.png" />
+</head>
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js')
+            .then((registration) => {
+              console.log('Service Worker registrado con éxito:', registration);
+            })
+            .catch((error) => {
+              console.error('Error al registrar el Service Worker:', error);
+            });
+        }
+      </script>
+
+    <h1>Harry Potter</h1>
+    <ul id="studentList"></ul>
+    
+    <script>
+        // Obtener datos de la API de estudiantes de Harry Potter
+        fetch('https://hp-api.onrender.com/api/characters/students')
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar los primeros 20 estudiantes en la lista
+                const studentListElement = document.getElementById('studentList');
+                data.slice(0, 20).forEach(student => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${student.name} - House: ${student.house}`;
+                    studentListElement.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+    <script src="sw.js"></script>
+    <script src="service-worker.js"></script>
+</body>
+</html>
